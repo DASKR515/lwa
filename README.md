@@ -1,7 +1,7 @@
 # lwa
 lua-for-win-stable
 LWA
-
+![LWA Icon](asset/icon.png)
 LWA is a lightweight toolkit designed to simplify working with Lua environments on Windows while reducing the complexity of building native Lua libraries.
 
 ---
