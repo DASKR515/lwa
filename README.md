@@ -5,7 +5,7 @@ LWA is a lightweight toolkit designed to simplify working with Lua environments 
 
 ---
 
-![LWA Icon](asset/icon.png)
+![LWA Icon](asset/lwa.png)
 
 About the Project
 
