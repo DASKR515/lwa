@@ -6,24 +6,28 @@
     --text-dim: #888;
 }
 
-body { margin: 0; background-color: var(--bg); color: var(--text-main); font-family: 'Inter', sans-serif; }
+body { margin: 0; background-color: var(--bg); color: var(--text-main); font-family: 'Segoe UI', Tahoma, sans-serif; }
 
 nav { display: flex; justify-content: space-between; padding: 2rem 10%; border-bottom: 1px solid #1a1a1a; }
 .logo { font-weight: 900; font-size: 1.5rem; }
 .logo span { color: var(--accent); }
+.links a { color: var(--text-main); text-decoration: none; margin-left: 20px; font-weight: 500; }
 
-header { padding: 100px 10%; text-align: center; }
+header { padding: 80px 10%; text-align: center; }
+.badge { background: #111; border: 1px solid #333; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; display: inline-block; margin-bottom: 20px; }
 h1 { font-size: 3.5rem; margin: 10px 0; }
 .highlight { color: var(--accent); }
 
-.btn-main { background: var(--accent); color: white; padding: 20px 45px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block; transition: 0.3s; }
-.btn-main:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0, 162, 255, 0.3); }
+.btn-main { 
+    background: var(--accent); color: white; padding: 18px 40px; border-radius: 10px; 
+    text-decoration: none; font-weight: bold; display: inline-block; transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(0, 162, 255, 0.3);
+}
+.btn-main:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 162, 255, 0.5); }
 
-.card-grid, .goals-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; padding: 50px 10%; }
-.card { background: var(--card-bg); padding: 2rem; border: 1px solid #1a1a1a; border-radius: 12px; }
-.highlight-card { border-color: var(--accent); }
-
-.goal-item { background: #080808; padding: 2rem; text-align: center; border: 1px solid #1a1a1a; border-radius: 10px; }
-.goal-item i { font-size: 2rem; color: var(--accent); margin-bottom: 15px; }
+.grid-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; padding: 50px 10%; }
+.card { background: var(--card-bg); padding: 2.5rem; border: 1px solid #1a1a1a; border-radius: 16px; }
+.highlight-card { border-color: var(--accent); box-shadow: 0 0 20px rgba(0, 162, 255, 0.1); }
+.meta-text { margin-top: 20px; color: var(--text-dim); font-size: 0.9rem; }
 
 footer { text-align: center; padding: 3rem; border-top: 1px solid #1a1a1a; color: var(--text-dim); }
