@@ -1,0 +1,13 @@
+rock_manifest = {
+   bin = {
+      ["yue.exe"] = "aa7eeb17c08e5c0bb516413d8abb6217"
+   },
+   doc = {
+      LICENSE = "112ec8b74a68b3226e4d9403b719559e",
+      ["README.md"] = "da9afd7f3bf71317d3eab5baeddbcdf7"
+   },
+   lib = {
+      ["yue.dll"] = "a484109ae36215bfe953695e3ea5fcb4"
+   },
+   ["yuescript-0.33.9-1.rockspec"] = "6e6fe5efe6f572f101a7462956a55fd3"
+}
