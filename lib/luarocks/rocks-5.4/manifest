@@ -172,6 +172,27 @@ dependencies = {
          }
       }
    },
+   xml2lua = {
+      ["1.6-2"] = {
+         {
+            constraints = {
+               {
+                  op = ">=",
+                  version = {
+                     5, 1, string = "5.1"
+                  }
+               },
+               {
+                  op = "<=",
+                  version = {
+                     5, 4, string = "5.4"
+                  }
+               }
+            },
+            name = "lua"
+         }
+      }
+   },
    yuescript = {
       ["0.33.9-1"] = {
          {
@@ -189,6 +210,9 @@ dependencies = {
    }
 }
 modules = {
+   XmlParser = {
+      "xml2lua/1.6-2"
+   },
    ansicolors = {
       "ansicolors/1.0.2-3"
    },
@@ -266,6 +290,18 @@ modules = {
    },
    ["socket.url"] = {
       "luasocket/3.1.0-1"
+   },
+   xml2lua = {
+      "xml2lua/1.6-2"
+   },
+   ["xmlhandler.dom"] = {
+      "xml2lua/1.6-2"
+   },
+   ["xmlhandler.print"] = {
+      "xml2lua/1.6-2"
+   },
+   ["xmlhandler.tree"] = {
+      "xml2lua/1.6-2"
    },
    yue = {
       "yuescript/0.33.9-1"
@@ -407,6 +443,22 @@ repository = {
                ["socket.smtp"] = "socket\\smtp.lua",
                ["socket.tp"] = "socket\\tp.lua",
                ["socket.url"] = "socket\\url.lua"
+            }
+         }
+      }
+   },
+   xml2lua = {
+      ["1.6-2"] = {
+         {
+            arch = "installed",
+            commands = {},
+            dependencies = {},
+            modules = {
+               XmlParser = "XmlParser.lua",
+               xml2lua = "xml2lua.lua",
+               ["xmlhandler.dom"] = "xmlhandler\\dom.lua",
+               ["xmlhandler.print"] = "xmlhandler\\print.lua",
+               ["xmlhandler.tree"] = "xmlhandler\\tree.lua"
             }
          }
       }

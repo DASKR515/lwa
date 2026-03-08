@@ -18,6 +18,7 @@ DefaultGroupName=LWA
 OutputBaseFilename=lwa-setup
 Compression=lzma
 SolidCompression=yes
+SetupIconFile=C:\Users\Administrator\Documents\lwa\asset\lwa.ico
 WizardStyle=modern
 DisableProgramGroupPage=yes
 ChangesEnvironment=yes
@@ -28,11 +29,9 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 [Files]
 Source: "C:\Program Files\lwa\*"; DestDir: "{app}"; Flags: recursesubdirs createallsubdirs
 
-[Icons]
-Name: "{autoprograms}\LWA"; Filename: "{app}\{#MyAppExeName}"
 
 [Registry]
-;
+; نترك فقط المتغيرات الثابتة، أما الـ Path فنتركه للكود البرمجي لضمان الأمان
 Root: HKCU; Subkey: "Environment"; \
 ValueType: string; ValueName: "LUAROCKS_CONFIG"; \
 ValueData: "{app}\etc\luarocks\config-5.4.lua"; \
@@ -49,7 +48,7 @@ begin
     AppBin := ExpandConstant('{app}') + '\bin';
     RegQueryStringValue(HKEY_CURRENT_USER, 'Environment', 'Path', Paths);
     
-    
+    // إضافة المسار فقط إذا لم يكن موجوداً
     if Pos(AppBin, Paths) = 0 then
     begin
       NewPath := Paths + ';' + AppBin;
