@@ -1,0 +1,9 @@
+rock_manifest = {
+   bin = {
+      luastatic = "261851043bd5561d57fc0b46afc4086e"
+   },
+   doc = {
+      ["license.txt"] = "7bae63a234e80ee7c6427dce9fdba6cc"
+   },
+   ["luastatic-0.0.12-1.rockspec"] = "f68762ce7c51e3611808b47cbd73808e"
+}

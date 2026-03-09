@@ -1,0 +1,15 @@
+rock_manifest = {
+   docs = {
+      ["index.html"] = "491cb0adec2f1c633f490c03657bb625",
+      ["ldoc.css"] = "cd109f8652061f611a31709aec20ba4c",
+      topics = {
+         ["readme.md.html"] = "76fafc04aebe1947afdcb83e90d36f12"
+      }
+   },
+   lua = {
+      timerwheel = {
+         ["init.lua"] = "42878d4b75557d1253d9453f56c03175"
+      }
+   },
+   ["timerwheel-1.0.2-1.rockspec"] = "87634af9d64774e6d3e1b4136d70bcdd"
+}

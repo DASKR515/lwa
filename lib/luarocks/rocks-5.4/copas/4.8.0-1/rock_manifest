@@ -1,0 +1,26 @@
+rock_manifest = {
+   bin = {
+      copas = "5938c6d7e615100df9ed7d02443175b7"
+   },
+   ["copas-4.8.0-1.rockspec"] = "bafe3788fd28b4bb25bb9f246167c7fd",
+   docs = {
+      ["copas.png"] = "246f076e04d89aae3b4e771c04033e5f",
+      ["doc.css"] = "c6544af339619553247c3449e6705aae",
+      ["index.html"] = "db2557619a841075b54ce2e950723553",
+      ["license.html"] = "cec7a310460c0055d96e88769d55febe",
+      ["manual.html"] = "c5b7df26fd77ee2944a5d28bac12fc57",
+      ["reference.html"] = "7ae38a53ba01a79706d60d49c9a886c9"
+   },
+   lua = {
+      copas = {
+         ["ftp.lua"] = "ab3ddc9e1a1aba66da7c7ac15ef91029",
+         ["http.lua"] = "39bf057b57951bf51d6b96b89f3dface",
+         ["lock.lua"] = "c0177e8dd6ee1263337469a9f2b0cb86",
+         ["queue.lua"] = "7e1ac65f25512208308fd8bdde0b8e84",
+         ["semaphore.lua"] = "bbfe92da6e9ee25078019167f37957f4",
+         ["smtp.lua"] = "cb995eb429c125a6e18bf8af84cd0bb1",
+         ["timer.lua"] = "1134564616c29d46ebbbffd35e8848ec"
+      },
+      ["copas.lua"] = "e855ac4a911ca93fa8d7f58f657a64b3"
+   }
+}

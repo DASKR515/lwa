@@ -29,16 +29,18 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 [Files]
 Source: "C:\Program Files\lwa\*"; DestDir: "{app}"; Flags: recursesubdirs createallsubdirs
 
-
 [Registry]
-; نترك فقط المتغيرات الثابتة، أما الـ Path فنتركه للكود البرمجي لضمان الأمان
 Root: HKCU; Subkey: "Environment"; \
-ValueType: string; ValueName: "LUAROCKS_CONFIG"; \
-ValueData: "{app}\etc\luarocks\config-5.4.lua"; \
-Flags: uninsdeletevalue
+  ValueType: string; ValueName: "LUAROCKS_CONFIG"; \
+  ValueData: "{app}\etc\luarocks\config-5.4.lua"; \
+  Flags: uninsdeletevalue
+
+Root: HKCU; Subkey: "Environment"; \
+  ValueType: string; ValueName: "LUA_CPATH"; \
+  ValueData: "{app}\bin\iuplua\?54.dll;{app}\lib\lua\5.4\iuplua\?54.dll;{app}\bin\?.dll;{app}\lib\lua\5.4\?.dll;.\?.dll"; \
+  Flags: uninsdeletevalue
 
 [Code]
-
 procedure CurStepChanged(CurStep: TSetupStep);
 var
   Paths, NewPath, AppBin: string;
@@ -48,7 +50,6 @@ begin
     AppBin := ExpandConstant('{app}') + '\bin';
     RegQueryStringValue(HKEY_CURRENT_USER, 'Environment', 'Path', Paths);
     
-    // إضافة المسار فقط إذا لم يكن موجوداً
     if Pos(AppBin, Paths) = 0 then
     begin
       NewPath := Paths + ';' + AppBin;

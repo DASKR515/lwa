@@ -1,0 +1,13 @@
+rock_manifest = {
+   ["30log-0.8.0-1.rockspec"] = "56adb19a8eac7c7029fd336af1460665",
+   doc = {
+      LICENSE = "d3f2b0c1aff68aac1cb61c711c34ae86",
+      ["README.md"] = "bc92214155f9d95c283585ece5ae2eb7",
+      ["version_history.md"] = "e4bd96d9f900070714b476d417a42f71"
+   },
+   lua = {
+      ["30log.lua"] = "b6e1ab7aa05007b125a881f3ca0707c3",
+      ["30logclean.lua"] = "de63de171da92897ff6ffa48f5fc6411",
+      ["30logglobal.lua"] = "a856f94eda4226e301b33916ab6fc589"
+   }
+}
