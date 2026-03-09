@@ -818,4 +818,475 @@
 
     .reveal.visible {
       opacity: 1;
-      transform: tran
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .split-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      .sandbox-wrap { grid-template-columns: 1fr; }
+      .lib-card.featured { grid-column: span 1; }
+    }
+
+    @media (max-width: 700px) {
+      nav { padding: 1rem 5%; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      section { padding: 64px 5%; }
+      .hero { padding: 100px 5% 64px; }
+      h1 { letter-spacing: -1px; }
+      .stat-item { padding: 8px 12px; font-size: 0.75rem; }
+      footer { flex-direction: column; align-items: flex-start; }
+      .libs-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .libs-grid { grid-template-columns: 1fr; }
+      .goals-grid { grid-template-columns: 1fr; }
+      .cta-group { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="https://raw.githubusercontent.com/DASKR515/lwa/main/asset/lwa.png" alt="LWA" onerror="this.style.display='none'" />
+    <span class="nav-logo-text">LWA<span>.sys</span></span>
+  </a>
+
+  <div class="nav-links">
+    <a href="#about">Problem</a>
+    <a href="#libraries">Libraries</a>
+    <a href="#goals">Goals</a>
+    <a href="#install">Install</a>
+    <a href="https://github.com/DASKR515/lwa" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+  </div>
+
+  <div class="nav-right">
+    <button class="theme-btn" onclick="toggleTheme()" title="Toggle theme">
+      <i id="theme-icon" class="fas fa-sun"></i>
+    </button>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#about" onclick="closeMenu()">Problem & Solution</a>
+  <a href="#libraries" onclick="closeMenu()">Libraries</a>
+  <a href="#goals" onclick="closeMenu()">Goals</a>
+  <a href="#install" onclick="closeMenu()">Install</a>
+  <a href="https://github.com/DASKR515/lwa" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <div class="hero-content">
+    <div class="badge">
+      <span class="badge-dot"></span>
+      v0.1 Stable Build — MIT Licensed
+    </div>
+
+    <h1>
+      <span class="hl">Lua</span> on Windows,<br />
+      <span class="hl2">Finally</span> Done Right.
+    </h1>
+
+    <p class="hero-sub">
+      A complete, isolated Lua 5.4 environment for Windows.<br />
+      LuaRocks works. GUI works. No compiler nightmares.
+    </p>
+
+    <div class="cta-group">
+      <a href="https://github.com/DASKR515/lwa/releases/download/lwa/lwa-setup.exe" class="btn-primary" download>
+        <i class="fas fa-download"></i> Download Installer
+      </a>
+      <a href="https://github.com/DASKR515/lwa" target="_blank" class="btn-ghost">
+        <i class="fab fa-github"></i> View on GitHub
+      </a>
+    </div>
+
+    <div class="stats-bar">
+      <div class="stat-item"><i class="fas fa-box"></i> 12+ Libraries</div>
+      <div class="stat-item"><i class="fas fa-desktop"></i> IUP GUI Ready</div>
+      <div class="stat-item"><i class="fas fa-feather"></i> ~15MB</div>
+      <div class="stat-item"><i class="fas fa-shield-alt"></i> Isolated Env</div>
+      <div class="stat-item"><i class="fas fa-check-circle"></i> 90% LuaRocks Fixed</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROBLEM / SOLUTION ── -->
+<section id="about">
+  <div class="reveal">
+    <div class="section-label">// 01 — the problem</div>
+    <h2 class="section-title">Building Lua on Windows is <span style="color:var(--accent)">Broken.</span></h2>
+    <p class="section-desc">Most developers spend hours fighting compilers before writing a single line of Lua.</p>
+  </div>
+
+  <div class="split-grid reveal">
+    <div class="split-card">
+      <div class="card-icon"><i class="fas fa-times-circle"></i></div>
+      <h3>The Old Way</h3>
+      <p>
+        Install <code>TCC</code>, fight linker errors.<br />
+        Try <code>MinGW</code>, get DLL mismatches.<br />
+        Try <code>Clang</code>, discover missing headers.<br /><br />
+        Spend <strong>days or weeks</strong> just trying to install one LuaRocks package.
+        Most developers give up before they even start.
+      </p>
+    </div>
+    <div class="split-card accent-card">
+      <div class="card-icon"><i class="fas fa-check-circle"></i></div>
+      <h3>The LWA Way</h3>
+      <p>
+        After months of stress-testing every compiler on Windows, one truth emerged:
+        <code>cl.exe</code> (Visual Studio) causes the fewest problems.<br /><br />
+        LWA pre-configures the entire toolchain. Install once, write Lua immediately.
+        No PATH editing. No compiler hunting. No broken builds.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section id="how">
+  <div class="reveal">
+    <div class="section-label">// 02 — how it works</div>
+    <h2 class="section-title">Three Steps to <span style="color:var(--accent)">Ready.</span></h2>
+    <p class="section-desc">From zero to a working Lua environment in under 2 minutes.</p>
+  </div>
+
+  <div class="steps">
+    <div class="step reveal">
+      <div class="step-num">01</div>
+      <h4>Download & Install</h4>
+      <p>Run the <code>.exe</code> installer. LWA sets up Lua 5.4, LuaRocks, all core libraries, and IUP in one shot. No manual configuration needed.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">02</div>
+      <h4>Activate with run.ps1</h4>
+      <p>Open PowerShell and run <code>run.ps1</code>. This activates the isolated LWA environment — your PATH, LUA_PATH, and LuaRocks config are all set automatically.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">03</div>
+      <h4>Write Lua</h4>
+      <p>Install any library with <code>luarocks install</code>. Packages stay inside your project — your system stays clean. Build GUIs with IUP. Ship your app.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── LIBRARIES ── -->
+<section id="libraries">
+  <div class="reveal">
+    <div class="section-label">// 03 — included libraries</div>
+    <h2 class="section-title">Batteries <span style="color:var(--accent)">Included.</span></h2>
+    <p class="section-desc">12 of the most essential Lua libraries, pre-installed and tested on Windows.</p>
+  </div>
+
+  <div class="libs-grid reveal">
+
+    <div class="lib-card featured">
+      <div class="lib-icon"><i class="fas fa-window-maximize"></i></div>
+      <div class="lib-info">
+        <h5>IUP — GUI Toolkit</h5>
+        <p>Build native Windows desktop apps with Lua. Dialogs, buttons, inputs, menus — all working out of the box with zero setup.</p>
+      </div>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-icon"><i class="fas fa-code"></i></div>
+      <div class="lib-info">
+        <h5>lua-cjson</h5>
+        <p>Fast JSON encoding & decoding</p>
+      </div>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-icon"><i class="fas fa-folder-open"></i></div>
+      <div class="lib-info">
+        <h5>luafilesystem</h5>
+        <p>File & directory operations</p>
+      </div>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-icon"><i class="fas fa-network-wired"></i></div>
+      <div class="lib-info">
+        <h5>luasocket</h5>
+        <p>TCP/UDP networking primitives</p>
+      </div>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-icon"><i class="fas fa-globe"></i></div>
+      <div class="lib-info">
+        <h5>lua-resty-http</h5>
+        <p>HTTP/HTTPS client requests</p>
+      </div>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-icon"><i class="fas fa-terminal"></i></div>
+      <div class="lib-info">
+        <h5>argparse</h5>
+        <p>CLI argument parsing</p>
+      </div>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-icon"><i class="fas fa-palette"></i></div>
+      <div class="lib-info">
+        <h5>ansicolors</h5>
+        <p>Colored terminal output</p>
+      </div>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-icon"><i class="fas fa-calendar"></i></div>
+      <div class="lib-info">
+        <h5>date</h5>
+        <p>Date & time manipulation</p>
+      </div>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-icon"><i class="fas fa-file-code"></i></div>
+      <div class="lib-info">
+        <h5>etlua</h5>
+        <p>Embedded template engine</p>
+      </div>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-icon"><i class="fas fa-search"></i></div>
+      <div class="lib-info">
+        <h5>lpeg</h5>
+        <p>Powerful pattern matching</p>
+      </div>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-icon"><i class="fas fa-file-alt"></i></div>
+      <div class="lib-info">
+        <h5>xml2lua</h5>
+        <p>XML parsing & processing</p>
+      </div>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-icon"><i class="fas fa-bolt"></i></div>
+      <div class="lib-info">
+        <h5>yuescript</h5>
+        <p>Modern language built on Lua</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── GOALS ── -->
+<section id="goals">
+  <div class="reveal">
+    <div class="section-label">// 04 — roadmap</div>
+    <h2 class="section-title">Where LWA is <span style="color:var(--accent)">Going.</span></h2>
+    <p class="section-desc">The project is actively evolving. Here's what's done and what's coming.</p>
+  </div>
+
+  <div class="goals-grid reveal">
+    <div class="goal-card">
+      <span class="goal-tag tag-done">✓ Done</span>
+      <h4>Stable Core Environment</h4>
+      <p>Lua 5.4 runtime, LuaRocks config, and 12 pre-tested libraries ready out of the box.</p>
+    </div>
+    <div class="goal-card">
+      <span class="goal-tag tag-done">✓ Done</span>
+      <h4>IUP GUI Integration</h4>
+      <p>Native Windows GUI toolkit fully integrated. Build desktop apps with Lua immediately.</p>
+    </div>
+    <div class="goal-card">
+      <span class="goal-tag tag-soon">→ Soon</span>
+      <h4>Sandbox System</h4>
+      <p>Isolated per-project environments via run.ps1. Libraries stay inside your project — your system stays clean.</p>
+    </div>
+    <div class="goal-card">
+      <span class="goal-tag tag-done">✓ Done</span>
+      <h4>One-Click Installer</h4>
+      <p>Full environment installed in seconds via a single .exe file.</p>
+    </div>
+    <div class="goal-card">
+      <span class="goal-tag tag-soon">→ Soon</span>
+      <h4>LWA CLI Tool</h4>
+      <p><code>lwa install</code>, <code>lwa run</code>, <code>lwa new</code> — a friendlier wrapper around LuaRocks and Lua.</p>
+    </div>
+    <div class="goal-card">
+      <span class="goal-tag tag-soon">→ Soon</span>
+      <h4>OpenSSL / LuaSec Support</h4>
+      <p>Native HTTPS support without manual OpenSSL setup. Currently the hardest problem on Windows.</p>
+    </div>
+    <div class="goal-card">
+      <span class="goal-tag tag-future">◎ Future</span>
+      <h4>Plugin System</h4>
+      <p>Extend LWA with community tools and developer utilities through a simple plugin architecture.</p>
+    </div>
+    <div class="goal-card">
+      <span class="goal-tag tag-future">◎ Future</span>
+      <h4>VS Code Integration</h4>
+      <p>Auto-configure VS Code for LWA with IntelliSense, debugging, and LuaRocks support.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── INSTALL ── -->
+<section id="install">
+  <div class="reveal" style="text-align:center; max-width: 720px; margin: 0 auto;">
+    <div class="section-label">// 05 — get started</div>
+    <h2 class="section-title">Start in <span style="color:var(--accent)">60 Seconds.</span></h2>
+    <p class="section-desc" style="margin: 0 auto 0;">Download the installer or clone the repo and run the environment manually.</p>
+  </div>
+
+  <div class="install-box reveal">
+    <div class="install-tabs">
+      <button class="tab-btn active" onclick="switchTab('installer', this)">Installer (.exe)</button>
+      <button class="tab-btn" onclick="switchTab('manual', this)">Manual Setup</button>
+      <button class="tab-btn" onclick="switchTab('quickstart', this)">Quick Start</button>
+    </div>
+
+    <div class="tab-content active" id="tab-installer">
+      <div class="cmd-line">
+        <span style="color:var(--text2); font-size:0.8rem;">1. Download and run the installer below</span>
+      </div>
+      <div class="cmd-line">
+        <span style="color:var(--text2); font-size:0.8rem;">2. Launch PowerShell in your project folder</span>
+      </div>
+      <div class="cmd-line">
+        <span style="color:var(--text2); font-size:0.8rem;">3. Run run.ps1 to activate the environment</span>
+      </div>
+      <div style="margin-top:1.2rem;">
+        <a href="https://github.com/DASKR515/lwa/releases/download/lwa/lwa-setup.exe" class="btn-primary" download style="font-size:0.88rem; padding:12px 24px;">
+          <i class="fas fa-download"></i> Download lwa-setup.exe
+        </a>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-manual">
+      <div class="cmd-line">
+        <span class="prompt">PS&gt;</span>
+        <span>git clone https://github.com/DASKR515/lwa</span>
+      </div>
+      <div class="cmd-line">
+        <span class="prompt">PS&gt;</span>
+        <span>cd lwa</span>
+      </div>
+      <div class="cmd-line">
+        <span class="prompt">PS&gt;</span>
+        <span>.\run.ps1</span>
+      </div>
+      <button class="copy-btn" onclick="copyCmd()">
+        <i class="fas fa-copy"></i> Copy commands
+      </button>
+    </div>
+
+    <div class="tab-content" id="tab-quickstart">
+      <div class="cmd-line">
+        <span class="prompt">&gt;</span>
+        <span style="color:#c3e88d;">-- After activating run.ps1</span>
+      </div>
+      <div class="cmd-line">
+        <span class="prompt">PS&gt;</span>
+        <span>luarocks install inspect</span>
+      </div>
+      <div class="cmd-line">
+        <span class="prompt">PS&gt;</span>
+        <span>lua main.lua</span>
+      </div>
+      <div class="cmd-line" style="margin-top:0.5rem;">
+        <span style="color:var(--text2); font-size:0.8rem;">Libraries install inside your project — not globally.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-left">
+    <span class="nav-logo-text" style="font-size:1.1rem;">LWA<span style="color:var(--accent)">.sys</span></span>
+    <p>Developed by <strong>DASKR</strong> · Simple. Stable. Accessible.</p>
+    <p style="margin-top:4px; font-size:0.75rem;">MIT License · Lua 5.4 · Windows x64</p>
+  </div>
+  <div class="footer-links">
+    <a href="https://github.com/DASKR515/lwa" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+    <a href="https://github.com/DASKR515/lwa/releases" target="_blank"><i class="fas fa-tag"></i> Releases</a>
+    <a href="https://github.com/DASKR515/lwa/issues" target="_blank"><i class="fas fa-bug"></i> Issues</a>
+  </div>
+</footer>
+
+<script>
+  /* ── THEME TOGGLE ── */
+  function toggleTheme() {
+    const html = document.documentElement;
+    const icon = document.getElementById('theme-icon');
+    if (html.getAttribute('data-theme') === 'dark') {
+      html.setAttribute('data-theme', 'light');
+      icon.className = 'fas fa-moon';
+    } else {
+      html.setAttribute('data-theme', 'dark');
+      icon.className = 'fas fa-sun';
+    }
+  }
+
+  /* ── MOBILE MENU ── */
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const btn = document.getElementById('hamburger');
+    menu.classList.toggle('open');
+    btn.classList.toggle('open');
+  }
+
+  function closeMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  }
+
+  /* ── TABS ── */
+  function switchTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  /* ── COPY ── */
+  function copyCmd() {
+    const text = 'git clone https://github.com/DASKR515/lwa\ncd lwa\n.\\run.ps1';
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.querySelector('.copy-btn');
+      btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+      setTimeout(() => btn.innerHTML = '<i class="fas fa-copy"></i> Copy commands', 2000);
+    });
+  }
+
+  /* ── SCROLL REVEAL ── */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
