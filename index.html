@@ -821,7 +821,52 @@
       transform: translateY(0);
     }
 
-    /* ── RESPONSIVE ── */
+    /* ── LIB FILTERS ── */
+    .lib-filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .filter-btn {
+      background: var(--card);
+      border: 1px solid var(--border2);
+      color: var(--text2);
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      padding: 7px 16px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .filter-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    .filter-count {
+      background: rgba(255,255,255,0.2);
+      padding: 1px 6px;
+      border-radius: 10px;
+      font-size: 0.7rem;
+    }
+
+    .lib-card.hidden {
+      display: none;
+    }
+
+    
     @media (max-width: 900px) {
       .split-grid { grid-template-columns: 1fr; }
       .steps { grid-template-columns: 1fr; }
@@ -894,7 +939,7 @@
   <div class="hero-content">
     <div class="badge">
       <span class="badge-dot"></span>
-      v0.1 Stable Build — MIT Licensed
+      v1.0 Stable Build — MIT Licensed
     </div>
 
     <h1>
@@ -908,7 +953,7 @@
     </p>
 
     <div class="cta-group">
-      <a href="https://github.com/DASKR515/lwa/releases/download/lwa/lwa-setup.exe" class="btn-primary" download>
+      <a href="https://github.com/DASKR515/lwa/releases/download/lua/lwa-setup.exe" class="btn-primary" download>
         <i class="fas fa-download"></i> Download Installer
       </a>
       <a href="https://github.com/DASKR515/lwa" target="_blank" class="btn-ghost">
@@ -917,7 +962,7 @@
     </div>
 
     <div class="stats-bar">
-      <div class="stat-item"><i class="fas fa-box"></i> 12+ Libraries</div>
+      <div class="stat-item"><i class="fas fa-box"></i> 24+ Libraries</div>
       <div class="stat-item"><i class="fas fa-desktop"></i> IUP GUI Ready</div>
       <div class="stat-item"><i class="fas fa-feather"></i> ~15MB</div>
       <div class="stat-item"><i class="fas fa-shield-alt"></i> Isolated Env</div>
@@ -991,12 +1036,23 @@
   <div class="reveal">
     <div class="section-label">// 03 — included libraries</div>
     <h2 class="section-title">Batteries <span style="color:var(--accent)">Included.</span></h2>
-    <p class="section-desc">12 of the most essential Lua libraries, pre-installed and tested on Windows.</p>
+    <p class="section-desc">24 essential Lua libraries across every category — pre-installed, tested, and ready on Windows.</p>
   </div>
 
-  <div class="libs-grid reveal">
+  <!-- Filter tabs -->
+  <div class="lib-filters reveal">
+    <button class="filter-btn active" onclick="filterLibs('all', this)">All <span class="filter-count">24</span></button>
+    <button class="filter-btn" onclick="filterLibs('gui', this)">GUI</button>
+    <button class="filter-btn" onclick="filterLibs('network', this)">Network</button>
+    <button class="filter-btn" onclick="filterLibs('data', this)">Data</button>
+    <button class="filter-btn" onclick="filterLibs('tools', this)">Dev Tools</button>
+    <button class="filter-btn" onclick="filterLibs('async', this)">Async</button>
+  </div>
 
-    <div class="lib-card featured">
+  <div class="libs-grid reveal" id="libs-grid">
+
+    <!-- GUI -->
+    <div class="lib-card featured" data-cat="gui">
       <div class="lib-icon"><i class="fas fa-window-maximize"></i></div>
       <div class="lib-info">
         <h5>IUP — GUI Toolkit</h5>
@@ -1004,23 +1060,8 @@
       </div>
     </div>
 
-    <div class="lib-card">
-      <div class="lib-icon"><i class="fas fa-code"></i></div>
-      <div class="lib-info">
-        <h5>lua-cjson</h5>
-        <p>Fast JSON encoding & decoding</p>
-      </div>
-    </div>
-
-    <div class="lib-card">
-      <div class="lib-icon"><i class="fas fa-folder-open"></i></div>
-      <div class="lib-info">
-        <h5>luafilesystem</h5>
-        <p>File & directory operations</p>
-      </div>
-    </div>
-
-    <div class="lib-card">
+    <!-- Network -->
+    <div class="lib-card" data-cat="network">
       <div class="lib-icon"><i class="fas fa-network-wired"></i></div>
       <div class="lib-info">
         <h5>luasocket</h5>
@@ -1028,7 +1069,7 @@
       </div>
     </div>
 
-    <div class="lib-card">
+    <div class="lib-card" data-cat="network">
       <div class="lib-icon"><i class="fas fa-globe"></i></div>
       <div class="lib-info">
         <h5>lua-resty-http</h5>
@@ -1036,47 +1077,16 @@
       </div>
     </div>
 
-    <div class="lib-card">
-      <div class="lib-icon"><i class="fas fa-terminal"></i></div>
+    <!-- Data -->
+    <div class="lib-card" data-cat="data">
+      <div class="lib-icon"><i class="fas fa-code"></i></div>
       <div class="lib-info">
-        <h5>argparse</h5>
-        <p>CLI argument parsing</p>
+        <h5>lua-cjson</h5>
+        <p>Fast JSON encoding & decoding</p>
       </div>
     </div>
 
-    <div class="lib-card">
-      <div class="lib-icon"><i class="fas fa-palette"></i></div>
-      <div class="lib-info">
-        <h5>ansicolors</h5>
-        <p>Colored terminal output</p>
-      </div>
-    </div>
-
-    <div class="lib-card">
-      <div class="lib-icon"><i class="fas fa-calendar"></i></div>
-      <div class="lib-info">
-        <h5>date</h5>
-        <p>Date & time manipulation</p>
-      </div>
-    </div>
-
-    <div class="lib-card">
-      <div class="lib-icon"><i class="fas fa-file-code"></i></div>
-      <div class="lib-info">
-        <h5>etlua</h5>
-        <p>Embedded template engine</p>
-      </div>
-    </div>
-
-    <div class="lib-card">
-      <div class="lib-icon"><i class="fas fa-search"></i></div>
-      <div class="lib-info">
-        <h5>lpeg</h5>
-        <p>Powerful pattern matching</p>
-      </div>
-    </div>
-
-    <div class="lib-card">
+    <div class="lib-card" data-cat="data">
       <div class="lib-icon"><i class="fas fa-file-alt"></i></div>
       <div class="lib-info">
         <h5>xml2lua</h5>
@@ -1084,11 +1094,157 @@
       </div>
     </div>
 
-    <div class="lib-card">
+    <div class="lib-card" data-cat="data">
+      <div class="lib-icon"><i class="fas fa-folder-open"></i></div>
+      <div class="lib-info">
+        <h5>luafilesystem</h5>
+        <p>File & directory operations</p>
+      </div>
+    </div>
+
+    <div class="lib-card" data-cat="data">
+      <div class="lib-icon"><i class="fas fa-search"></i></div>
+      <div class="lib-info">
+        <h5>lpeg</h5>
+        <p>Powerful pattern matching</p>
+      </div>
+    </div>
+
+    <div class="lib-card" data-cat="data">
+      <div class="lib-icon"><i class="fas fa-calendar"></i></div>
+      <div class="lib-info">
+        <h5>date</h5>
+        <p>Date & time manipulation</p>
+      </div>
+    </div>
+
+    <div class="lib-card" data-cat="data">
+      <div class="lib-icon"><i class="fas fa-lock"></i></div>
+      <div class="lib-info">
+        <h5>md5</h5>
+        <p>MD5 hashing & checksums</p>
+      </div>
+    </div>
+
+    <div class="lib-card" data-cat="data">
+      <div class="lib-icon"><i class="fas fa-table"></i></div>
+      <div class="lib-info">
+        <h5>penlight</h5>
+        <p>Utilities for strings, paths & tables</p>
+      </div>
+    </div>
+
+    <!-- Dev Tools -->
+    <div class="lib-card" data-cat="tools">
+      <div class="lib-icon"><i class="fas fa-terminal"></i></div>
+      <div class="lib-info">
+        <h5>argparse</h5>
+        <p>CLI argument parsing</p>
+      </div>
+    </div>
+
+    <div class="lib-card" data-cat="tools">
+      <div class="lib-icon"><i class="fas fa-palette"></i></div>
+      <div class="lib-info">
+        <h5>ansicolors</h5>
+        <p>Colored terminal output</p>
+      </div>
+    </div>
+
+    <div class="lib-card" data-cat="tools">
+      <div class="lib-icon"><i class="fas fa-bug"></i></div>
+      <div class="lib-info">
+        <h5>inspect</h5>
+        <p>Human-readable variable inspection</p>
+      </div>
+    </div>
+
+    <div class="lib-card" data-cat="tools">
+      <div class="lib-icon"><i class="fas fa-vial"></i></div>
+      <div class="lib-info">
+        <h5>luaunit</h5>
+        <p>Unit testing framework</p>
+      </div>
+    </div>
+
+    <div class="lib-card" data-cat="tools">
+      <div class="lib-icon"><i class="fas fa-list-alt"></i></div>
+      <div class="lib-info">
+        <h5>lualogging</h5>
+        <p>Structured logging with levels</p>
+      </div>
+    </div>
+
+    <div class="lib-card" data-cat="tools">
+      <div class="lib-icon"><i class="fas fa-cube"></i></div>
+      <div class="lib-info">
+        <h5>30log</h5>
+        <p>Lightweight OOP in 30 lines</p>
+      </div>
+    </div>
+
+    <div class="lib-card" data-cat="tools">
+      <div class="lib-icon"><i class="fas fa-file-code"></i></div>
+      <div class="lib-info">
+        <h5>etlua</h5>
+        <p>Embedded template engine</p>
+      </div>
+    </div>
+
+    <div class="lib-card" data-cat="tools">
+      <div class="lib-icon"><i class="fas fa-box-open"></i></div>
+      <div class="lib-info">
+        <h5>loadkit</h5>
+        <p>Load non-Lua files as modules</p>
+      </div>
+    </div>
+
+    <div class="lib-card" data-cat="tools">
       <div class="lib-icon"><i class="fas fa-bolt"></i></div>
       <div class="lib-info">
         <h5>yuescript</h5>
         <p>Modern language built on Lua</p>
+      </div>
+    </div>
+
+    <div class="lib-card" data-cat="tools">
+      <div class="lib-icon"><i class="fas fa-hammer"></i></div>
+      <div class="lib-info">
+        <h5>luastatic</h5>
+        <p>Build standalone .exe from Lua</p>
+      </div>
+    </div>
+
+    <!-- Async -->
+    <div class="lib-card" data-cat="async">
+      <div class="lib-icon"><i class="fas fa-random"></i></div>
+      <div class="lib-info">
+        <h5>lanes</h5>
+        <p>True multi-threading for Lua</p>
+      </div>
+    </div>
+
+    <div class="lib-card" data-cat="async">
+      <div class="lib-icon"><i class="fas fa-sync-alt"></i></div>
+      <div class="lib-info">
+        <h5>copas</h5>
+        <p>Async coroutine-based dispatcher</p>
+      </div>
+    </div>
+
+    <div class="lib-card" data-cat="async">
+      <div class="lib-icon"><i class="fas fa-clock"></i></div>
+      <div class="lib-info">
+        <h5>timerwheel</h5>
+        <p>Efficient timer scheduling</p>
+      </div>
+    </div>
+
+    <div class="lib-card" data-cat="async">
+      <div class="lib-icon"><i class="fas fa-project-diagram"></i></div>
+      <div class="lib-info">
+        <h5>binaryheap</h5>
+        <p>Priority queue data structure</p>
       </div>
     </div>
 
@@ -1173,7 +1329,7 @@
         <span style="color:var(--text2); font-size:0.8rem;">3. Run run.ps1 to activate the environment</span>
       </div>
       <div style="margin-top:1.2rem;">
-        <a href="https://github.com/DASKR515/lwa/releases/download/lwa/lwa-setup.exe" class="btn-primary" download style="font-size:0.88rem; padding:12px 24px;">
+        <a href="https://github.com/DASKR515/lwa/releases/download/lua/lwa-setup.exe" class="btn-primary" download style="font-size:0.88rem; padding:12px 24px;">
           <i class="fas fa-download"></i> Download lwa-setup.exe
         </a>
       </div>
@@ -1276,7 +1432,20 @@
     });
   }
 
-  /* ── SCROLL REVEAL ── */
+  /* ── LIB FILTER ── */
+  function filterLibs(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('#libs-grid .lib-card').forEach(card => {
+      if (cat === 'all' || card.dataset.cat === cat) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  }
+
+  
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
